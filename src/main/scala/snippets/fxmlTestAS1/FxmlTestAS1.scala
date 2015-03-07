@@ -1,4 +1,4 @@
-package snippets.fxmlTest
+package snippets.fxmlTestAS1
 
 import scalafx.application.JFXApp
 import scalafx.Includes._
@@ -6,14 +6,15 @@ import scalafx.scene.Scene
 import scala.reflect.runtime.universe.typeOf
 import scalafxml.core.{FXMLView, DependenciesByType}
 
+case class TestDependency1()
 
-object FxmlTest extends JFXApp {
+object FxmlTestAS1 extends JFXApp {
 
-  val res =  getClass.getResource("startscreen.fxml")
+  val res =  getClass.getResource("astest1.fxml")
 
   val root = FXMLView(res,
     new DependenciesByType(Map(
-      typeOf[TestDependency] -> new TestDependency("hello world"))))
+      typeOf[TestDependency1] -> new TestDependency1())))
 
   stage = new JFXApp.PrimaryStage() {
     title = "Hello world"
