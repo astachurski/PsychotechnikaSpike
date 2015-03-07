@@ -4,24 +4,33 @@ import java.util.Calendar
 
 import akka.actor.{ActorRef, Props, ActorSystem, Actor}
 
+import scala.concurrent.Future
 import scala.util.Random
 import scalafx.Includes._
+import scalafx.animation.AnimationTimer
 import scalafx.application.JFXApp
 import scalafx.application.JFXApp.PrimaryStage
 import scalafx.event.ActionEvent
 import scalafx.geometry.{Insets, Pos}
 import scalafx.scene.control._
+import scalafx.scene.input.MouseEvent
 import scalafx.scene.layout.{GridPane, HBox, VBox}
 import scalafx.scene.paint.Color
+import scalafx.scene.shape.Rectangle
 import scalafx.scene.{Node, Scene}
 import scala.concurrent.duration._
 import scalafx.util.converter.DateTimeStringConverter
 
-
 case class PsychoStimulus(originTime: Long)
+
 case class GeneratorStartCommand(receiver: ActorRef)
+
 case class ResponseEvent(originTime: Long)
 
+
+object Globals {
+  var squareOn: Boolean = false
+}
 
 class PsychoEventListener extends Actor {
 
@@ -33,6 +42,7 @@ class PsychoEventListener extends Actor {
   }
 
   def showResults(): Unit = {
+    Globals.squareOn = false
     println(s"And the result is: $difCalc ms")
   }
 
@@ -40,18 +50,23 @@ class PsychoEventListener extends Actor {
     case PsychoStimulus(originTime) => lastStimulusTime = originTime
     case ResponseEvent(originTime) => lastResponseTime = originTime; showResults()
   }
-
 }
 
 
 class Generator extends Actor {
+
+  import scala.concurrent.ExecutionContext.Implicits.global
+
   def generate(recv: ActorRef) {
-    for (i <- 1 to 20) {
 
-      println(s"Test# $i - React NOW !")
-      recv ! PsychoStimulus(Calendar.getInstance().getTimeInMillis)
+    Future {
+      for (i <- 1 to 20) {
 
-      Thread.sleep(Random.nextInt(3500))
+        //println(s"Test# $i - React NOW !")
+        Globals.squareOn = true
+        recv ! PsychoStimulus(Calendar.getInstance().getTimeInMillis)
+        Thread.sleep(Random.nextInt(2000) + 3000)
+      }
     }
   }
 
@@ -70,8 +85,31 @@ object PsychoActorsSpike extends JFXApp {
     val defFontStyle = "-fx-font-size: 16pt"
     val defFontStyleBold = """-fx-font-size: 16pt;-fx-font-weight:bold"""
 
-    val b1 = new Button("Aparat Krzyżowy") {}
-    b1.onAction = { e: ActionEvent => psychoEventListener ! ResponseEvent(Calendar.getInstance().getTimeInMillis)}
+    val b1 = new Button("Aparat Krzyżowy") {
+      id = "b1Button"
+
+      onMouseClicked = {
+
+        (_: MouseEvent) =>
+          psychoEventListener ! ResponseEvent(Calendar.getInstance().getTimeInMillis)
+      }
+
+    }
+
+
+    //b1.onAction = { e: ActionEvent => psychoEventListener ! ResponseEvent(Calendar.getInstance().getTimeInMillis)}
+
+    /*b1.handleEvent(MouseEvent.Any) {
+      me: MouseEvent => {
+        me.eventType match {
+          case MouseEvent.MouseClicked => psychoEventListener ! ResponseEvent(Calendar.getInstance().getTimeInMillis)
+          case _ =>
+        }
+      }
+    }*/
+
+
+    //b1 b
 
     val b2 = new Button("Aparat Piórkowskiego") {}
     val b3 = new Button("Wirometr") {}
@@ -145,7 +183,17 @@ object PsychoActorsSpike extends JFXApp {
 
     Seq(
 
-      mainVBox
+      mainVBox,
+
+      new Rectangle {
+        id.set("dupa")
+        x = 25
+        y = 40
+        width = 100
+        height = 100
+        fill = Color.GREEN
+      }
+
       //mainCaptionHBox,
       //mainGridPane
     )
@@ -154,16 +202,10 @@ object PsychoActorsSpike extends JFXApp {
   def getMainScene: Scene = {
 
     new Scene(850, 750) {
-
       stylesheets += "default.css"
-
       fill = Color.web("1a3399")
-
       content = getMainSceneContent
-
-
     }
-
 
   }
 
@@ -182,6 +224,19 @@ object PsychoActorsSpike extends JFXApp {
   generator ! GeneratorStartCommand(psychoEventListener)
 
   //system.scheduler.schedule(0.seconds, 2.second, psychoEventListener, PsychoStimulus(Calendar.getInstance().getTimeInMillis))(system.dispatcher, psychoEventListener)
+
+
+  val foundActionNode = stage.getScene.lookup("#b1Button").asInstanceOf[javafx.scene.control.Button]
+
+  val timer = AnimationTimer { _ =>
+
+    if (foundActionNode != null) {
+      foundActionNode.text = if (Globals.squareOn) "NOW!!!" else "Prepare..."
+    }
+  }
+
+  timer.start()
+
 }
 
 
