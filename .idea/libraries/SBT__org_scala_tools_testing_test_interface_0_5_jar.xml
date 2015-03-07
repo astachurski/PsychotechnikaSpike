@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="SBT: org.scala-tools.testing:test-interface:0.5:jar">
+    <CLASSES>
+      <root url="jar://E:/activator-1.2.12/repository/org.scala-tools.testing/test-interface/0.5/jars/test-interface.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
