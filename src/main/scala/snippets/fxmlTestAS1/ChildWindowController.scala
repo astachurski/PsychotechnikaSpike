@@ -44,13 +44,16 @@ class ChildWindowController extends jfxf.Initializable {
 
 
   @jfxf.FXML
-  def onBtnDupaAction(event: javafx.event.ActionEvent): Unit = {
+  def onBtnChildExit(event: javafx.event.ActionEvent): Unit = {
+    hideAll()
 
-    println("onBtnDupaAction")
+    println("onBtnChildExit")
   }
 
   override def initialize(location: URL, resources: ResourceBundle): Unit = {
     //paneContents = new BorderPane()
+
+
 
   }
 }

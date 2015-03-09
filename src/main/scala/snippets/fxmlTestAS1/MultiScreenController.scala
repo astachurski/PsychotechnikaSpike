@@ -15,8 +15,6 @@ class MultiScreenController extends jfxf.Initializable {
   @jfxf.FXML
   private var paneExaminations: jfxsl.Pane = _
   @jfxf.FXML
-  private var pane2: jfxsl.Pane = _
-  @jfxf.FXML
   private var paneMain: jfxsl.Pane = _
   @jfxf.FXML
   private var stackPainMain: jfxsl.StackPane = _
@@ -48,9 +46,11 @@ class MultiScreenController extends jfxf.Initializable {
   @jfxf.FXML
   def onBtnBypassExamDataClicked(event: ActionEvent) = {
 
-    paneExaminations.setVisible(true)
+    paneExaminations.setVisible(false)
     paneEnterExaminationData.setVisible(false)
     paneMain.setVisible(false)
+    childWindowController.showAll()
+
 
   }
 
@@ -65,7 +65,6 @@ class MultiScreenController extends jfxf.Initializable {
 
   @jfxf.FXML
   def onBtnShowWindow2(event: ActionEvent) = {
-    pane2.setVisible(true)
     paneMain.setVisible(false)
 
   }
@@ -80,13 +79,13 @@ class MultiScreenController extends jfxf.Initializable {
   @jfxf.FXML
   def onBtnGoBack2(event: ActionEvent) = {
     paneMain.setVisible(true)
-    pane2.setVisible(false)
+
 
   }
 
   def resetToDefault(): Unit = {
     paneExaminations.setVisible(false)
-    pane2.setVisible(false)
+
     paneEnterExaminationData.setVisible(false)
     paneMain.setVisible(true)
   }
@@ -109,7 +108,7 @@ class MultiScreenController extends jfxf.Initializable {
 
   @jfxf.FXML
   def onBtnShowExaminationAction(event: ActionEvent) = {
-    childWindowController.showAll()
+    //childWindowController.showAll()
 
   }
 
