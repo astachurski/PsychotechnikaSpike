@@ -9,8 +9,6 @@ import javafx.{fxml => jfxf, event}
 import scalafx.Includes._
 
 
-
-
 class MultiScreenController extends jfxf.Initializable {
 
 
@@ -25,6 +23,9 @@ class MultiScreenController extends jfxf.Initializable {
   //private val myService: MyService
   @jfxf.FXML
   private var paneEnterExaminationData: jfxsl.Pane = _
+
+  @jfxf.FXML
+  private var childWindowController: ChildWindowController = _
 
 
   //Intermediate window that can be bypassed...
@@ -93,10 +94,24 @@ class MultiScreenController extends jfxf.Initializable {
 
   def initialize(url: URL, rb: util.ResourceBundle) {
     resetToDefault()
+    childWindowController.hideAll()
   }
 
   def test(): Unit = {
     println("test")
 
   }
+
+  def showChild(): Unit = {
+    childWindowController.showAll()
+  }
+
+
+  @jfxf.FXML
+  def onBtnShowExaminationAction(event: ActionEvent) = {
+    childWindowController.showAll()
+
+  }
+
+
 }

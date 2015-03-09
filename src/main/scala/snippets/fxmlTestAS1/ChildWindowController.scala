@@ -13,7 +13,6 @@ import javafx.{event => jfxe}
 import javafx.{fxml => jfxf}
 
 
-
 /*
 trait ChildControllerIntf {
   def initialize(): Unit
@@ -22,13 +21,33 @@ trait ChildControllerIntf {
 */
 
 
-class ChildController extends jfxf.Initializable {
+class ChildWindowController extends jfxf.Initializable {
 
   @jfxf.FXML
   private var btnDupa: jfxsc.Button = _
 
   @jfxf.FXML
   private var paneContents: jfxsl.BorderPane = _
+
+  @jfxf.FXML
+  private var childWindow: jfxsl.Pane = _
+
+
+
+  def hideAll(): Unit = {
+    childWindow.setVisible(false)
+  }
+
+  def showAll(): Unit = {
+    childWindow.setVisible(true)
+  }
+
+
+  @jfxf.FXML
+  def onBtnDupaAction(event: javafx.event.ActionEvent): Unit = {
+
+    println("onBtnDupaAction")
+  }
 
   override def initialize(location: URL, resources: ResourceBundle): Unit = {
     //paneContents = new BorderPane()
