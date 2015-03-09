@@ -1,80 +1,102 @@
 package snippets.fxmlTestAS1
 
-import scalafx.event.ActionEvent
-import scalafx.scene.input.MouseEvent
-import scalafx.scene.layout.{StackPane, Pane}
-import scalafxml.core.macros.sfxml
-
-trait MultiScreenControllerIntf {
-
-  def initialize()
-}
-
-@sfxml
-class MultiScreenController(
-                             private val paneExaminations: Pane,
-                             private val pane2: Pane,
-                             private val paneMain: Pane,
-                             private val stackPainMain: StackPane,
-                             private val myService: MyService,
-                             private val paneEnterExaminationData: Pane) extends MultiScreenControllerIntf {
+import java.net.URL
+import java.util
+import javafx.event.ActionEvent
+import javafx.scene.{control => jfxsc}
+import javafx.scene.{layout => jfxsl}
+import javafx.{fxml => jfxf, event}
+import scalafx.Includes._
 
 
+
+
+class MultiScreenController extends jfxf.Initializable {
+
+
+  @jfxf.FXML
+  private var paneExaminations: jfxsl.Pane = _
+  @jfxf.FXML
+  private var pane2: jfxsl.Pane = _
+  @jfxf.FXML
+  private var paneMain: jfxsl.Pane = _
+  @jfxf.FXML
+  private var stackPainMain: jfxsl.StackPane = _
+  //private val myService: MyService
+  @jfxf.FXML
+  private var paneEnterExaminationData: jfxsl.Pane = _
+
+
+  //Intermediate window that can be bypassed...
+  @jfxf.FXML
   def btnShowEnterExaminationData(event: ActionEvent) = {
-
     paneEnterExaminationData.setVisible(true)
     paneMain.setVisible(false)
     paneExaminations.setVisible(false)
 
   }
 
-  def onBtnExitToPaneMainClicked(event: MouseEvent) = {
 
-    initialize()
-
+  @jfxf.FXML
+  def onBtnExitToPaneMainClicked(event: ActionEvent) = {
+    resetToDefault()
   }
 
 
-  def onBtnBypassExamDataClicked(event: MouseEvent) = {
+  //Enter the main examination picker screen. Now choose the test...
+  @jfxf.FXML
+  def onBtnBypassExamDataClicked(event: ActionEvent) = {
+
     paneExaminations.setVisible(true)
     paneEnterExaminationData.setVisible(false)
     paneMain.setVisible(false)
+
   }
 
 
+  @jfxf.FXML
   def onBtnShowWindow1(event: ActionEvent) = {
     paneExaminations.setVisible(true)
     paneMain.setVisible(false)
-    myService.printSth()
+    //myService.printSth()
 
   }
 
+  @jfxf.FXML
   def onBtnShowWindow2(event: ActionEvent) = {
     pane2.setVisible(true)
     paneMain.setVisible(false)
 
   }
 
+  @jfxf.FXML
   def onBtnGoBack1(event: ActionEvent) = {
     paneMain.setVisible(true)
     paneExaminations.setVisible(false)
 
   }
 
+  @jfxf.FXML
   def onBtnGoBack2(event: ActionEvent) = {
     paneMain.setVisible(true)
     pane2.setVisible(false)
 
   }
 
-  override def initialize(): Unit = {
-
+  def resetToDefault(): Unit = {
     paneExaminations.setVisible(false)
     pane2.setVisible(false)
     paneEnterExaminationData.setVisible(false)
     paneMain.setVisible(true)
-    println("initialized")
+  }
 
+
+  def initialize(url: URL, rb: util.ResourceBundle) {
+    resetToDefault()
+  }
+
+  def test(): Unit = {
+    println("test")
 
   }
 }
