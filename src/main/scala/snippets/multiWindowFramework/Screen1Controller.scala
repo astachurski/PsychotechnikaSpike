@@ -15,7 +15,6 @@ class Screen1Controller extends Initializable with ControlledScreen {
 
   override def initialize(location: URL, resources: ResourceBundle): Unit = {
 
-
   }
 
   override def setScreenParent(screenParent: ScreensController): Unit = {
@@ -25,13 +24,13 @@ class Screen1Controller extends Initializable with ControlledScreen {
 
   @FXML
   def goToScreen2(event: ActionEvent): Unit = {
-    myController.setScreen(ScreenNames.POKER_SCREEN)
+    myController.setScreen(ScreenNames.SCREEN2_SCREEN)
 
   }
 
   @FXML
   def goToScreen3(event: ActionEvent): Unit = {
-    myController.setScreen(ScreenNames.ROULETTE_SCREEN)
+    myController.setScreen(ScreenNames.SCREEN3_SCREEN)
 
   }
 

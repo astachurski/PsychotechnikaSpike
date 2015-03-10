@@ -35,13 +35,13 @@ class Screen2Controller extends Initializable with ControlledScreen {
 
   @FXML
   def goToScreen1(event: ActionEvent): Unit = {
-    myController.setScreen(ScreenNames.MAIN_SCREEN)
+    myController.setScreen(ScreenNames.SCREEN1_SCREEN)
 
   }
 
   @FXML
   def goToScreen3(event: ActionEvent): Unit = {
-    myController.setScreen(ScreenNames.ROULETTE_SCREEN)
+    myController.setScreen(ScreenNames.SCREEN3_SCREEN)
 
   }
 

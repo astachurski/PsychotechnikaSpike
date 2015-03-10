@@ -9,10 +9,10 @@ object Consts {
 }
 
 object ScreenNames {
-  val MAIN_SCREEN = "main"
-  val MAIN_SCREEN_FXML = "Screen1.fxml"
-  val POKER_SCREEN = "poker"
-  val POKER_SCREEN_FXML = "Screen2.fxml"
-  val ROULETTE_SCREEN = "roulette"
-  val ROULETTE_SCREEN_FXML = "Screen3.fxml"
+  val SCREEN1_SCREEN = "main"
+  val SCREEN1_SCREEN_FXML = "Screen1.fxml"
+  val SCREEN2_SCREEN = "poker"
+  val SCREEN2_SCREEN_FXML = "Screen2.fxml"
+  val SCREEN3_SCREEN = "roulette"
+  val SCREEN3_SCREEN_FXML = "Screen3.fxml"
 }

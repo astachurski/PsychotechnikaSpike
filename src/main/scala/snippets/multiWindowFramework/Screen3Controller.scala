@@ -6,10 +6,6 @@ import javafx.event.ActionEvent
 import javafx.fxml
 import javafx.fxml.{FXML, Initializable}
 
-/**
- * Created by adrian on 3/9/2015.
- */
-
 
 class Screen3Controller extends Initializable with ControlledScreen {
 
@@ -22,25 +18,18 @@ class Screen3Controller extends Initializable with ControlledScreen {
 
   override def setScreenParent(screenParent: ScreensController): Unit = {
     myController = screenParent
-
   }
 
-
-  @FXML
-  def gotoMain(event: ActionEvent): Unit = {
-    //myController.setScreen()
-
-  }
 
   @FXML
   def goToScreen1(event: ActionEvent): Unit = {
-    myController.setScreen(ScreenNames.MAIN_SCREEN)
+    myController.setScreen(ScreenNames.SCREEN1_SCREEN)
 
   }
 
   @FXML
   def goToScreen2(event: ActionEvent): Unit = {
-    myController.setScreen(ScreenNames.POKER_SCREEN)
+    myController.setScreen(ScreenNames.SCREEN2_SCREEN)
 
   }
 
