@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.paint.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane fx:id="mainBorderPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="689.0" prefWidth="910.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="snippets.fxmlTestAS1.MultiScreenController">
+   <center>
+      <StackPane fx:id="stackPainMain" prefHeight="721.0" prefWidth="1165.0" BorderPane.alignment="CENTER">
+         <children>
+            <Pane fx:id="paneExaminations" prefHeight="804.0" prefWidth="1285.0" visible="false">
+               <children>
+                  <Polygon fill="DODGERBLUE" layoutX="419.0" layoutY="307.0" stroke="BLACK" strokeType="INSIDE">
+                    <points>
+                      <Double fx:value="-50.0" />
+                      <Double fx:value="40.0" />
+                      <Double fx:value="50.0" />
+                      <Double fx:value="40.0" />
+                      <Double fx:value="0.0" />
+                      <Double fx:value="-60.0" />
+                    </points>
+                  </Polygon>
+                  <Button fx:id="btnGoBack1" layoutX="83.0" layoutY="502.0" mnemonicParsing="false" onAction="#onBtnGoBack1" prefHeight="75.0" prefWidth="114.0" text="GoBack" />
+               </children>
+            </Pane>
+            <Pane fx:id="paneMain" prefHeight="200.0" prefWidth="200.0" visible="false">
+               <children>
+                  <VBox alignment="CENTER" layoutX="350.0" layoutY="243.0" prefHeight="362.0" prefWidth="465.0" spacing="20.0" style="-fx-background-color: blue;">
+                     <children>
+                        <Button fx:id="btnExaminations" layoutX="350.0" layoutY="243.0" minWidth="350.0" mnemonicParsing="false" onAction="#btnShowEnterExaminationData" text="Badania" textAlignment="CENTER">
+                           <font>
+                              <Font name="Arial" size="32.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="btnShowWindow1" layoutX="350.0" layoutY="363.0" minWidth="350.0" mnemonicParsing="false" onAction="#onBtnShowWindow1" text="Raporty i Zestawienia" textAlignment="CENTER">
+                           <font>
+                              <Font name="Arial" size="32.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="btnShowWindow2" layoutX="350.0" layoutY="462.0" minWidth="350.0" mnemonicParsing="false" onAction="#onBtnShowWindow2" text="Wyjście" textAlignment="CENTER">
+                           <font>
+                              <Font name="Arial" size="32.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="btnShowChild" mnemonicParsing="false" prefHeight="74.0" prefWidth="110.0" rotate="169.7" text="Button" />
+                     </children>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                  </VBox>
+               </children>
+            </Pane>
+            <Pane fx:id="paneEnterExaminationData" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: blue;" visible="false">
+               <children>
+                  <Button fx:id="btnBypassExamData" layoutX="352.0" layoutY="400.0" maxHeight="70.0" minHeight="70.0" minWidth="150.0" mnemonicParsing="false" onAction="#onBtnBypassExamDataClicked" prefHeight="60.0" prefWidth="98.0" text="Pomiń">
+                     <font>
+                        <Font size="26.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="btnGotoExaminationPanel" layoutX="526.0" layoutY="400.0" maxHeight="70.0" minHeight="70.0" minWidth="150.0" mnemonicParsing="false" onAction="#onBtnShowExaminationAction" prefHeight="71.0" prefWidth="99.0" text="Dane">
+                     <font>
+                        <Font size="26.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="btnExitToPaneMain" layoutX="708.0" layoutY="400.0" maxHeight="70.0" minHeight="70.0" minWidth="150.0" mnemonicParsing="false" onAction="#onBtnExitToPaneMainClicked" prefHeight="76.0" prefWidth="127.0" text="Wyjście">
+                     <font>
+                        <Font size="26.0" />
+                     </font>
+                  </Button>
+                  <Label layoutX="315.0" layoutY="302.0" text="Priosze wprowadzic dane badanego" textFill="WHITE">
+                     <font>
+                        <Font size="38.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+            <fx:include fx:id="childWindow" source="multiScreenTestChild1.fxml" />
+         </children>
+      </StackPane>
+   </center>
+</BorderPane>
