@@ -1,12 +1,14 @@
+package snippets
+
 import scalafx.Includes._
 import scalafx.application.JFXApp
 import scalafx.application.JFXApp.PrimaryStage
 import scalafx.event.ActionEvent
-import scalafx.geometry.{Pos, Insets}
+import scalafx.geometry.{Insets, Pos}
+import scalafx.scene.control.{Button, Label}
+import scalafx.scene.layout.{GridPane, HBox, VBox}
 import scalafx.scene.paint.Color
-import scalafx.scene.{Scene, Node}
-import scalafx.scene.control.{Label, Button}
-import scalafx.scene.layout.{VBox, HBox, GridPane}
+import scalafx.scene.{Node, Scene}
 
 object TestMain extends JFXApp {
 
