@@ -42,6 +42,7 @@
  */ -
 -->
 
+<?import javafx.scene.paint.*?>
 <?import javafx.scene.effect.*?>
 <?import javafx.geometry.*?>
 <?import java.lang.*?>
@@ -51,22 +52,30 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<Pane prefHeight="805.0" prefWidth="846.0" style="-fx-background-color: lime;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="psychoGui.ScreenExaminationsController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" style="-fx-background-color: blue;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="psychoGui.ScreenExaminationsController">
    <children>
-          <Label layoutX="86.0" layoutY="28.0" prefHeight="97.0" prefWidth="731.0" text="Psychotechnical examinations">
+          <Label layoutX="322.0" layoutY="18.0" prefHeight="97.0" prefWidth="731.0" text="Psychotechnical examinations">
               <font>
                   <Font size="50.0" />
               </font>
+         <textFill>
+            <LinearGradient endX="1.0" endY="0.480952380952381" startY="0.40476190476190477">
+               <stops>
+                  <Stop color="#e80e0e" />
+                  <Stop color="#c4f50c" offset="1.0" />
+               </stops>
+            </LinearGradient>
+         </textFill>
           </Label>
-          <Button layoutX="461.0" layoutY="675.0" mnemonicParsing="false" onAction="#goToScreenMain" prefHeight="66.0" prefWidth="155.0" text="Exit" underline="true">
+          <Button layoutX="662.0" layoutY="615.0" mnemonicParsing="false" onAction="#goToScreenMain" prefHeight="66.0" prefWidth="155.0" text="Exit" underline="true">
          <font>
             <Font size="20.0" />
          </font></Button>
-          <Button layoutX="270.0" layoutY="675.0" mnemonicParsing="false" prefHeight="66.0" prefWidth="142.0" text="Results">
+          <Button layoutX="471.0" layoutY="615.0" mnemonicParsing="false" prefHeight="66.0" prefWidth="142.0" text="Results">
          <font>
             <Font size="20.0" />
          </font></Button>
-      <GridPane alignment="CENTER" gridLinesVisible="true" layoutX="213.0" layoutY="138.0" prefHeight="395.0" prefWidth="457.0">
+      <GridPane alignment="CENTER" gridLinesVisible="true" layoutX="379.0" layoutY="132.0" prefHeight="448.0" prefWidth="534.0">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -77,7 +86,7 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Button alignment="CENTER" minHeight="80.0" minWidth="200.0" mnemonicParsing="false" text="Button" GridPane.halignment="CENTER">
+            <Button alignment="CENTER" minHeight="80.0" minWidth="200.0" mnemonicParsing="false" onAction="#goToScreenSimpleReactions" text="Simple Reactions" GridPane.halignment="CENTER">
                <font>
                   <Font size="20.0" />
                </font></Button>
